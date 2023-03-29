@@ -10,11 +10,12 @@ dotenv.config()
 
 const getUsers = require('./Controllers/UserControllers.js');
 
-app.get("/users", getUsers);
-
+// This route can be changed / used
 app.get("/", (req, res)=>{
     res.send("Welcome to Budget Buddies");
 })
+
+app.get("/users", getUsers);
 
 const port = process.env.PORT || 5000;
 
