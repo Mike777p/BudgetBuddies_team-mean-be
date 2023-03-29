@@ -19,7 +19,7 @@ dotenv.config();
 async function seed() {
   try {
     await mongoose.connect(
-      "mongodb+srv://MEAN:Bb123456..@budgetbuddies.t7ojtka.mongodb.net/budget-buddies?retryWrites=true&w=majority",
+      "mongodb://localhost:27017/budgetBuddy",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
