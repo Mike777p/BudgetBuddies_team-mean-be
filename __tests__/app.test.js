@@ -1,7 +1,8 @@
 const request = require("supertest");
 const mongoose = require("mongoose");
 const app = require("../app.js");
-
+const { MongoMemoryServer } = require('mongodb-memory-server');
+const {MongoClient} = require('mongodb');
 const {
   Budget,
   Currency,
@@ -18,13 +19,21 @@ const {
   } = require("../db/mock-data/index.js");
 
 describe("GET /expensesCategories", () => {
+  let mongoServer, mongoUri;
+
   beforeAll(async () => {
+    const mongoServer = await MongoMemoryServer.create();
+    const mongoUri = mongo.getUri();
     await mongoose.connect(mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false
     });
+
+    connection = await MongoClient.connect(globalThis.__MONGO_URI__, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    db = await connection.db(globalThis.__MONGO_DB_NAME__);
     await User.insertMany(mockUserData);
     await Budget.insertMany(mockBudgetData);
     await Currency.insertMany(mockCurrenciesData);
@@ -33,8 +42,9 @@ describe("GET /expensesCategories", () => {
   });
 
   afterAll(async () => {
-    await mongoose.disconnect();
-    await mongoServer.stop();
+    // await mongoose.disconnect();
+    // await mongoServer.stop();
+    await connection.close();
   });
 
   afterEach(async () => {
