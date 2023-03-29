@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const IncomeCategorySchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -8,4 +8,4 @@ const IncomeCategorySchema = new mongoose.Schema({
 
 const IncomeCategory = mongoose.model("IncomeCategory", IncomeCategorySchema);
 
-export default IncomeCategory
+module.exports = IncomeCategory

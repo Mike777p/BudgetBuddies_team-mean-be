@@ -21,4 +21,4 @@ const mockIncomeCategoriesData = [
   },
 ];
 
-export default mockIncomeCategoriesData;
+module.exports = mockIncomeCategoriesData;

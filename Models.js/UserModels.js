@@ -1,4 +1,5 @@
-import User from "../db/seeds/models.js/Users";
+const User = require('../db/seeds/models.js/Users');
+
 
 const fetchUsers = async () => {
     try {
@@ -11,4 +12,4 @@ const fetchUsers = async () => {
 }
 
 
-export default fetchUsers
+module.exports = fetchUsers;

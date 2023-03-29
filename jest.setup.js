@@ -1,25 +1,17 @@
-const mongoose = require("mongoose");
-import MongoMemoryServer from "mongodb-memory-server";
+const mongoose = require('mongoose');
+const { MongoMemoryServer } = require('mongodb-memory-server');
 
 let mongoServer;
 
-beforeAll(async () => {
+module.exports = async () => {
   mongoServer = new MongoMemoryServer();
-  const mongoUri = await mongoServer.getConnectionString();
-  await mongoose.connect(mongoUri, {
+  await mongoose.connect(await mongoServer.getUri(), {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
   });
-});
+};
 
-afterAll(async () => {
+module.exports.teardown = async () => {
   await mongoose.disconnect();
   await mongoServer.stop();
-});
-
-beforeEach(async () => {
-  await mongoose.connection.db.dropDatabase();
-});
-
+};

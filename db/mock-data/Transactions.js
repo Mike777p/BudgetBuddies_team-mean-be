@@ -130,3 +130,5 @@ const transactions = [
     currency_id: 1,
   },
 ];
+
+module.exports = transactions

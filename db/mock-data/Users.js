@@ -115,4 +115,4 @@ const mockUserData = {
   ],
 };
 
-export default mockUserData;
+module.exports = mockUserData;

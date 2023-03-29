@@ -110,3 +110,5 @@ const user_goals = [
       reason: "home renovation",
     }
   ];
+
+  module.exports = user_goals

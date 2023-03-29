@@ -1,7 +1,13 @@
-import Budget from "./BudgetModel.js"
-import Currency from "./CurrenciesModel.js"
-import ExpenseCategories from "./ExpenseCategoriesModel.js"
-import IncomeCategory from "./IncomeCategoriesModel.js"
-import User from "./Users.js"
+const Budget = require('./BudgetModel.js');
+const Currency = require('./CurrenciesModel.js');
+const ExpenseCategories = require('./ExpenseCategoriesModel.js');
+const IncomeCategory = require('./IncomeCategoriesModel.js');
+const User = require('./Users.js');
 
-export { Budget,Currency, ExpenseCategories, IncomeCategory, User }
+module.exports = {
+  Budget,
+  Currency,
+  ExpenseCategories,
+  IncomeCategory,
+  User,
+};

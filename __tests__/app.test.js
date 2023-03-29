@@ -1,20 +1,21 @@
-import request from "supertest";
-import mongoose from "mongoose";
-import app from "../app.js";
-import {
-    Budget,
-    Currency,
-    ExpenseCategories,
-    IncomeCategory,
-    User,
-  } from "../db/seeds/models.js/ModelIndex.js";
-  import {
-    mockBudgetData,
-    mockExpencesCategoriesData,
-    mockUserData,
-    mockCurrenciesData,
-    mockIncomeCategoriesData,
-  } from "../db/mock-data/index.js";
+const request = require("supertest");
+const mongoose = require("mongoose");
+const app = require("../app.js");
+
+const {
+  Budget,
+  Currency,
+  ExpenseCategories,
+  IncomeCategory,
+  User,
+  } = require("../db/seeds/models.js/ModelIndex.js");
+  const {
+  mockBudgetData,
+  mockExpencesCategoriesData,
+  mockUserData,
+  mockCurrenciesData,
+  mockIncomeCategoriesData,
+  } = require("../db/mock-data/index.js");
 
 describe("GET /expensesCategories", () => {
   beforeAll(async () => {

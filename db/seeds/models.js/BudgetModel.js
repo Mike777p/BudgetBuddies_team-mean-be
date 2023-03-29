@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+
 
 const CategorySpendsSchema = new mongoose.Schema({
   categoryId: { type: Number, required: true },
@@ -25,5 +26,6 @@ const BudgetSchema = new mongoose.Schema({
 
 const Budget = mongoose.model('Budget', BudgetSchema);
 
-export default Budget;
+module.exports = Budget;
+
 

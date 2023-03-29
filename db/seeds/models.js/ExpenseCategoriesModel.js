@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 
 const SubcategorySchema = new mongoose.Schema({
@@ -15,4 +15,4 @@ const ExpensesCategorySchema = new mongoose.Schema({
 
 const ExpenseCategories = mongoose.model("ExpensesCategory", ExpensesCategorySchema);
 
-export default ExpenseCategories
+module.exports = ExpenseCategories

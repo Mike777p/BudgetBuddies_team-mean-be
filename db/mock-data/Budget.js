@@ -26,4 +26,5 @@ const mockBudgetData = [{
   }],
 }];
 
-export default mockBudgetData;
+module.exports = mockBudgetData;
+

@@ -73,4 +73,4 @@ const mockExpencesCategoriesData = [
   },
 ];
 
-export default mockExpencesCategoriesData;
+module.exports = mockExpencesCategoriesData;

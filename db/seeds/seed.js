@@ -1,19 +1,8 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import {
-  Budget,
-  Currency,
-  ExpenseCategories,
-  IncomeCategory,
-  User,
-} from "./models.js/ModelIndex.js";
-import {
-  mockBudgetData,
-  mockExpencesCategoriesData,
-  mockUserData,
-  mockCurrenciesData,
-  mockIncomeCategoriesData,
-} from "../mock-data/index.js";
+const mongoose = require('mongoose');
+const dotenv = require("dotenv");
+const { Budget, Currency, ExpenseCategories, IncomeCategory, User } = require("./models.js/ModelIndex.js");
+const { mockBudgetData, mockExpencesCategoriesData, mockUserData, mockCurrenciesData, mockIncomeCategoriesData } = require("../mock-data/index.js");
+
 dotenv.config();
 
 async function seed() {

@@ -1,12 +1,11 @@
-import express from "express";
-import getUsers from "./Controllers/UserControllers.js"
+const express = require("express");
+
+const getUsers = require('./Controllers/UserControllers.js');
 
 const app = express();
 
-const cors = require("cors");
-
-app.use(express.json(), cors());
+app.use(express.json());
 
 app.get("/users", getUsers);
 
-export default app;
+module.exports = app;

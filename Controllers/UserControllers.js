@@ -1,4 +1,5 @@
-import fetchUsers from "../Models.js/UserModels";
+const fetchUsers = require('../Models.js/UserModels');
+
 
 const getUsers = (request, response, next) => {
     fetchUsers()
@@ -10,4 +11,4 @@ const getUsers = (request, response, next) => {
     });
 }
 
-export default getUsers
+module.exports = getUsers;

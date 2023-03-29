@@ -26,4 +26,4 @@ const mockCurrenciesData = [
   },
 ];
 
-export default mockCurrenciesData;
+module.exports = mockCurrenciesData;
