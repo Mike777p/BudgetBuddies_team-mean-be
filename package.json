@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "nodemon server",
-    "seed": "node ./db/seeds/run-seed.js"
+    "seed": "node ./db/seeds/seed.js"
   },
   "keywords": [],
   "author": "",
