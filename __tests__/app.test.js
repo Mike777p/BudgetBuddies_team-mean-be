@@ -39,12 +39,13 @@ describe("GET /expensesCategories", () => {
     await Currency.insertMany(mockCurrenciesData);
     await ExpenseCategories.insertMany(mockExpencesCategoriesData);
     await IncomeCategory.insertMany(mockIncomeCategoriesData);
+    console.log("Data seeded successfully!");
   });
 
   afterAll(async () => {
-    // await mongoose.disconnect();
-    // await mongoServer.stop();
-    await connection.close();
+    await mongoose.disconnect();
+    await mongoServer.stop();
+    // await connection.close();
   });
 
   afterEach(async () => {
@@ -53,10 +54,10 @@ describe("GET /expensesCategories", () => {
     await Currency.deleteMany({});
     await ExpenseCategories.deleteMany({});
     await IncomeCategory.deleteMany({});
-    console.log("Data seeded successfully!");
+    console.log("Data deleted successfully!");
   });
 
-  test("it should return an array of expenses categories", async () => {
+  test("return all users", async () => {
     const response = await request(app).get("/users");
     expect(response.statusCode).toBe(200);
     expect(response.body.length).toBeGreaterThan(0);
