@@ -1,4 +1,4 @@
-const mockUserData = {
+const mockUserData = [{
   user_data: {
     user_id: 1,
     budget_id: 1,
@@ -75,44 +75,44 @@ const mockUserData = {
     {
       user_id: 1,
       target_amount: 10000,
-      balance: 100,
+      balance: 1000,
       target_date: "2023-12-31T00:00:00Z",
-      deposit: 200,
+      deposit: 210,
       deposit_frequency: "monthly",
-      reason: "boat",
+      reason: "boob-job",
     },
     {
       user_id: 1,
       target_amount: 12000,
-      balance: 200,
+      balance: 2000,
       target_date: "2024-01-31T00:00:00Z",
-      deposit: 250,
+      deposit: 350,
       deposit_frequency: "monthly",
-      reason: "new car",
+      reason: "new van",
     },
   ],
   recurringPayments: [
     {
       user_id: 1,
-      budget_id: 1,
-      category_id: 2,
-      description: "Netflix subscription",
-      amount: 10,
+      budget_id: 2,
+      category_id: 4,
+      description: "Shopping",
+      amount: 100,
       frequency: "monthly",
       start_date: "2023-04-01T00:00:00Z",
       end_date: "2023-12-31T00:00:00Z",
     },
     {
       user_id: 1,
-      budget_id: 1,
-      category_id: 3,
-      description: "Gym membership",
-      amount: 50,
+      budget_id: 2,
+      category_id: 10,
+      description: "University course",
+      amount: 120,
       frequency: "monthly",
       start_date: "2023-04-01T00:00:00Z",
       end_date: "2024-03-31T00:00:00Z",
     },
   ],
-};
+}];
 
 module.exports = mockUserData;
