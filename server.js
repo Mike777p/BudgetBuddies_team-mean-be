@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
+const dotenv = require('dotenv');
+const connectDB = require('./connect.js');
+const mongoose = require('mongoose');
 
-const dotenv = require("dotenv");
-const connectDB = require("./connect.js");
 
 app.use(express.json());
 
@@ -18,6 +19,7 @@ const {
   getUsers,
   getUserBalance,
   getUserGoals,
+  getUserById,
   getUserGroups,
   getUserBudget,
   getUserGoalById,
@@ -36,6 +38,8 @@ app.get("/users/:user_id/goals", getUserGoals);
 app.get("/users/:user_id/groups", getUserGroups);
 app.get("/user/:user_id/:goal_id", getUserGoalById)
 app.get("/users/:user_id/budget", getUserBudget);
+
+app.get('/users/:user_id', getUserById)
 
 const port = process.env.PORT || 5000;
 

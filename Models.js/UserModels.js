@@ -45,6 +45,16 @@ const fetchUserGoals = async (id) => {
   }
 };
 
+const fetchUserById = async (user_id) => {
+  try {
+    const user = await User.findOne({'user_data.user_id': user_id})
+    .select('user_data')
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
 const fetchUserGoalById = async (g_id, u_id) => {
   try {
     const userGoal = await User.findOne(
@@ -90,5 +100,6 @@ module.exports = {
   fetchUserGroups,
   fetchUserBudget,
   fetchUserGoalById,
+  fetchUserById
 };
 

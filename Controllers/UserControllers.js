@@ -3,6 +3,7 @@ const {
   fetchUsers,
   fetchUserBalance,
   fetchUserGoals,
+  fetchUserById,
   fetchUserGroups,
   fetchUserBudget,
   fetchUserGoalById,
@@ -45,6 +46,17 @@ const getUserGoalById = (request, response, next) => {
   });
 };
 
+const getUserById = (request, response, next) => {
+  const {user_id} = request.params;
+  fetchUserById(user_id)
+  .then((data) => {
+    response.status(200).send({data})
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+}
+
 const getUserGroups = (request, response, next) => {
   const { user_id } = request.params;
   fetchUserGroups(user_id).then((data) => {
@@ -70,4 +82,5 @@ module.exports = {
   getUserGroups,
   getUserBudget,
   getUserGoalById,
+  getUserById
 };
