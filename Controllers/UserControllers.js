@@ -1,4 +1,13 @@
-const { fetchUsers, fetchUserGoals, fetchUserGoalById } = require("../Models.js/UserModels");
+
+const {
+  fetchUsers,
+  fetchUserBalance,
+  fetchUserGoals,
+  fetchUserGroups,
+  fetchUserBudget,
+  fetchUserGoalById,
+} = require("../Models.js/UserModels");
+
 
 const getUsers = (request, response, next) => {
   fetchUsers()
@@ -6,6 +15,17 @@ const getUsers = (request, response, next) => {
       response.status(200).send({ data });
     })
     .catch(next);
+};
+
+const getUserBalance = (request, response, next) => {
+  const { user_id } = request.params;
+  fetchUserBalance(user_id)
+    .then((balanceData) => {
+      response.status(200).send({ balanceData });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 const getUserGoals = (request, response, next) => {
@@ -25,4 +45,29 @@ const getUserGoalById = (request, response, next) => {
   });
 };
 
-module.exports = { getUsers, getUserGoals, getUserGoalById };
+const getUserGroups = (request, response, next) => {
+  const { user_id } = request.params;
+  fetchUserGroups(user_id).then((data) => {
+    response.status(200).send({ data });
+  });
+};
+
+const getUserBudget = (request, response, next) => {
+  const { user_id } = request.params;
+  fetchUserBudget(user_id)
+    .then((budgetData) => {
+      response.status(200).send({ budgetData });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+module.exports = {
+  getUsers,
+  getUserBalance,
+  getUserGoals,
+  getUserGroups,
+  getUserBudget,
+  getUserGoalById,
+};
