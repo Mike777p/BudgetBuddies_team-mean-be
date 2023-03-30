@@ -11,6 +11,7 @@ const {
   getUsers,
   getUserBalance,
   getUserGoals,
+  getUserBudget,
 } = require('./Controllers/UserControllers.js');
 
 // This route can be changed / used
@@ -23,6 +24,8 @@ app.get('/users', getUsers);
 app.get('/users/:user_id/balance', getUserBalance);
 
 app.get('/users/:user_id/goals', getUserGoals);
+
+app.get('/users/:user_id/budget', getUserBudget);
 
 const port = process.env.PORT || 5000;
 

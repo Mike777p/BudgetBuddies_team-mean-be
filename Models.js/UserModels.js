@@ -21,11 +21,10 @@ const fetchUserBalance = async (user_id) => {
     return userBalance;
   } catch (error) {
     console.error(error);
-    throw error;
+    throw new Error(`Error fetching user balance: ${error.message}`);
   }
 };
 
-module.exports = { fetchUsers, fetchUserBalance };
 const fetchUserGoals = async (id) => {
   try {
     const user = await User.findOne({ 'user_data.user_id': id }).select(
@@ -40,4 +39,18 @@ const fetchUserGoals = async (id) => {
   }
 };
 
-module.exports = { fetchUsers, fetchUserBalance, fetchUserGoals };
+const fetchUserBudget = async (user_id) => {
+  try {
+    const userBudget = await Budget.find({ user_id });
+    return userBudget;
+  } catch (error) {
+    throw new Error(`Error fetching user budget: ${error.message}`);
+  }
+};
+
+module.exports = {
+  fetchUsers,
+  fetchUserBalance,
+  fetchUserGoals,
+  fetchUserBudget,
+};
