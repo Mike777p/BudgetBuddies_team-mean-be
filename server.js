@@ -18,6 +18,8 @@ const {getExpenseCategories, getExpenseCategoriesByName, getsubCategoriesByName}
 
 const {getCurrencies, getCurrencyByName} = require('./Controllers/CurrencyController')
 
+const {getIncomeCategories, getIncomeCategoryByName} = require('./Controllers/IncomeController')
+
 
 const {
   getUsers,
@@ -49,6 +51,8 @@ app.get('/expense_categories/:category_name', getExpenseCategoriesByName)
 app.get('/expense_categories/:category_name/subcategories', getsubCategoriesByName)
 app.get('/currencies', getCurrencies)
 app.get('/currencies/:currency_name', getCurrencyByName)
+app.get('/income_categories', getIncomeCategories)
+app.get('/income_categories/:category_name', getIncomeCategoryByName)
 
 const port = process.env.PORT || 5000;
 
