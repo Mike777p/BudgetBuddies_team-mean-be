@@ -18,6 +18,7 @@ const {
   getUsers,
   getUserBalance,
   getUserGoals,
+  getUserBudget,
 } = require('./Controllers/UserControllers.js');
 
 
@@ -30,6 +31,8 @@ app.get("/users/:user_id/transactions", getIndividualTransactions);
 app.get("/users/:user_id/transactions/:transaction_id", getSingleTransaction);
 app.get('/users/:user_id/balance', getUserBalance);
 app.get('/users/:user_id/goals', getUserGoals);
+
+app.get('/users/:user_id/budget', getUserBudget);
 
 const port = process.env.PORT || 5000;
 
