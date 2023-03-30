@@ -1,3 +1,4 @@
+
 const User = require('../db/seeds/models.js/Users');
 const Budget = require('../db/seeds/models.js/BudgetModel');
 
@@ -25,7 +26,6 @@ const fetchUserBalance = async (user_id) => {
   }
 };
 
-module.exports = { fetchUsers, fetchUserBalance };
 const fetchUserGoals = async (id) => {
   try {
     const user = await User.findOne({ 'user_data.user_id': id }).select(
