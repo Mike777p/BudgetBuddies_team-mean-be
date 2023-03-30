@@ -1,12 +1,11 @@
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
 
 const TransactionSchema = new mongoose.Schema({
-  transactionId: { type: mongoose.Types.ObjectId, ref: 'CategorySpendsSchema'},
+  transactionId: { type: mongoose.Types.ObjectId, ref: "CategorySpendsSchema" },
   userId: { type: Number, required: true },
   budgetId: { type: Number, required: true },
   categoryId: { type: Number, required: true },
-  type: { type: String, enum: ['income', 'expense'], required: true },
+  type: { type: String, enum: ["income", "expense"], required: true },
   description: { type: String, required: false },
   amount: { type: Number, required: true },
   date: { type: Date, required: true },
@@ -54,7 +53,6 @@ const UserSchema = new mongoose.Schema({
   recurringPayments: [RecurringPaymentSchema],
 });
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model("User", UserSchema);
 
-module.exports = User
-
+module.exports = User;
