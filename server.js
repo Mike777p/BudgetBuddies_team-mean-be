@@ -14,7 +14,7 @@ const {
   getSingleTransaction,
 } = require("./Controllers/TransactionController");
 
-const {getExpenseCategories} = require('./Controllers/ExpenseController')
+const {getExpenseCategories, getExpenseCategoriesByName} = require('./Controllers/ExpenseController')
 
 
 const {
@@ -43,6 +43,7 @@ app.get("/users/:user_id/budget", getUserBudget);
 
 app.get('/users/:user_id', getUserById)
 app.get('/expense_categories', getExpenseCategories)
+app.get('/expense_categories/:category_name', getExpenseCategoriesByName)
 
 const port = process.env.PORT || 5000;
 
