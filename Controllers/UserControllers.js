@@ -1,15 +1,13 @@
-
-
 const {
   fetchUsers,
   fetchUserBalance,
   fetchUserGoals,
-} = require('../Models.js/UserModels');
+  fetchUserGroups,
+} = require("../Models.js/UserModels");
 
 const getUsers = (request, response, next) => {
   fetchUsers()
     .then((data) => {
-
       response.status(200).send({ data });
     })
     .catch((error) => {
@@ -21,14 +19,12 @@ const getUserBalance = (request, response, next) => {
   const { user_id } = request.params;
   fetchUserBalance(user_id)
     .then((data) => {
- 
       response.status(200).send({ data });
     })
     .catch((error) => {
       console.log(error);
     });
 };
-
 
 const getUserGoals = (request, response, next) => {
   const { user_id } = request.params;
@@ -37,4 +33,11 @@ const getUserGoals = (request, response, next) => {
   });
 };
 
-module.exports = { getUsers, getUserBalance, getUserGoals };
+const getUserGroups = (request, response, next) => {
+  const { user_id } = request.params;
+  fetchUserGroups(user_id).then((data) => {
+    response.status(200).send({ data });
+  });
+};
+
+module.exports = { getUsers, getUserBalance, getUserGoals, getUserGroups };
