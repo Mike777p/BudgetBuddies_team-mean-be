@@ -61,7 +61,7 @@ const mockUserData = {
       currency_id: 1,
     },
     {
-      userId: 2,
+      userId: 1,
       budgetId: 1,
       categoryId: 28,
       type: "income",
@@ -103,7 +103,7 @@ const mockUserData = {
       end_date: "2023-12-31T00:00:00Z",
     },
     {
-      user_id: 2,
+      user_id: 1,
       budget_id: 1,
       category_id: 3,
       description: "Gym membership",

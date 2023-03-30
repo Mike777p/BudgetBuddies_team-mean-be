@@ -11,5 +11,16 @@ const fetchUsers = async () => {
       }
 }
 
+const fetchUserGoals = async (id) => {
+  try {
+    const user = await User.findOne({ 'user_data.user_id': id }).select("userGoals");
+    if (!user) {
+      throw new Error(`User with id ${id} not found`);
+    }
+    return user
+  } catch (error) {
+    throw new Error(`Error fetching user goals: ${error.message}`);
+  }
+};
 
-module.exports = fetchUsers;
+module.exports = {fetchUsers, fetchUserGoals};
