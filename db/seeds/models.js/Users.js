@@ -24,6 +24,7 @@ const UserGoalSchema = new mongoose.Schema({
   deposit: { type: Number, required: true },
   deposit_frequency: { type: String, required: true },
   reason: { type: String },
+  goal_id: { type: mongoose.Types.ObjectId }
 });
 
 const RecurringPaymentSchema = new mongoose.Schema({
