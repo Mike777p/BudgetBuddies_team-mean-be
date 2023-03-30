@@ -6,12 +6,13 @@ const Budget = require("../db/seeds/models.js/BudgetModel");
 const fetchUsers = async () => {
   try {
     const users = await User.find();
-    if (!user) {
+    if (!users) {
       throw new Error(`User ${id} not found`);
     }
     return users;
-  } catch (next) {
-    throw error;
+  } catch (error) {
+    console.error(error);
+    throw new Error(`Error! user not found: ${error.message}`);
   }
 };
 
