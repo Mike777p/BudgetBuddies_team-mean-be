@@ -1,4 +1,8 @@
-const { fetchUsers, fetchUserBalance } = require('../Models.js/UserModels');
+const {
+  fetchUsers,
+  fetchUserBalance,
+  fetchUserGoals,
+} = require('../Models.js/UserModels');
 
 const getUsers = (request, response, next) => {
   fetchUsers()
@@ -21,4 +25,11 @@ const getUserBalance = (request, response, next) => {
     });
 };
 
-module.exports = { getUsers, getUserBalance };
+const getUserGoals = (request, response, next) => {
+  const { user_id } = request.params;
+  fetchUserGoals(user_id).then((data) => {
+    response.status(200).send({ data });
+  });
+};
+
+module.exports = { getUsers, getUserBalance, getUserGoals };

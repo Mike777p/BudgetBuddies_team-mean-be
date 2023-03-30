@@ -10,6 +10,7 @@ dotenv.config();
 const {
   getUsers,
   getUserBalance,
+  getUserGoals,
 } = require('./Controllers/UserControllers.js');
 
 // This route can be changed / used
@@ -20,6 +21,8 @@ app.get('/', (req, res) => {
 app.get('/users', getUsers);
 
 app.get('/users/:user_id/balance', getUserBalance);
+
+app.get('/users/:user_id/goals', getUserGoals);
 
 const port = process.env.PORT || 5000;
 
