@@ -2,7 +2,7 @@ const request = require("supertest");
 const mongoose = require("mongoose");
 const app = require("../app.js");
 const { MongoMemoryServer } = require('mongodb-memory-server');
-const {MongoClient} = require('mongodb');
+// const {MongoClient} = require('mongodb');
 const {
   Budget,
   Currency,
@@ -18,8 +18,8 @@ const {
   mockIncomeCategoriesData,
   } = require("../db/mock-data/index.js");
 
-describe("GET /expensesCategories", () => {
-  let mongoServer, mongoUri;
+
+  let mongoServer
 
   beforeAll(async () => {
     const mongoServer = await MongoMemoryServer.create();
@@ -29,10 +29,7 @@ describe("GET /expensesCategories", () => {
       useUnifiedTopology: true,
     });
 
-    connection = await MongoClient.connect(globalThis.__MONGO_URI__, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+
     db = await connection.db(globalThis.__MONGO_DB_NAME__);
     await User.insertMany(mockUserData);
     await Budget.insertMany(mockBudgetData);
@@ -62,4 +59,4 @@ describe("GET /expensesCategories", () => {
     expect(response.statusCode).toBe(200);
     expect(response.body.length).toBeGreaterThan(0);
   });
-});
+
