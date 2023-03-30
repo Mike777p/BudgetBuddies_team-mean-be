@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const connectDB = require('./connect.js');
+const mongoose = require('mongoose');
 
 app.use(express.json());
 
@@ -11,6 +12,7 @@ const {
   getUsers,
   getUserBalance,
   getUserGoals,
+  getUserById
 } = require('./Controllers/UserControllers.js');
 
 // This route can be changed / used
@@ -23,6 +25,8 @@ app.get('/users', getUsers);
 app.get('/users/:user_id/balance', getUserBalance);
 
 app.get('/users/:user_id/goals', getUserGoals);
+
+app.get('/users/:user_id', getUserById)
 
 const port = process.env.PORT || 5000;
 

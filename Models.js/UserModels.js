@@ -40,4 +40,14 @@ const fetchUserGoals = async (id) => {
   }
 };
 
-module.exports = { fetchUsers, fetchUserBalance, fetchUserGoals };
+const fetchUserById = async (user_id) => {
+  try {
+    const user = await User.findOne({'user_data.user_id': user_id})
+    .select('user_data')
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+module.exports = { fetchUsers, fetchUserBalance, fetchUserGoals, fetchUserById };
