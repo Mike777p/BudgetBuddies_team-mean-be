@@ -20,7 +20,19 @@ const fetchExpenseCategoriesByName = async (category) => {
     }
 }
 
+const fetchSubCategoriesByName = async (category) => {
+    try {
+        const subCategories = await ExpenseCategories.find({'name': category}).select(
+            'subcategories'
+        )
+        return subCategories;
+    } catch (error) {
+        throw new Error(`Expence category ${category} was not found`)
+    }
+}
+
 module.exports = {
     fetchExpenseCategories,
-    fetchExpenseCategoriesByName
+    fetchExpenseCategoriesByName,
+    fetchSubCategoriesByName
 }
