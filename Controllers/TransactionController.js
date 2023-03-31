@@ -1,6 +1,7 @@
 const {
   fetchIndividualTransactions,
   fetchSingleTransaction,
+  insertUserTransaction,
 } = require("../Models.js/TransactionModels");
 
 const getIndividualTransactions = (request, response, next) => {
@@ -29,4 +30,13 @@ const getSingleTransaction = (request, response, next) => {
     });
 };
 
-module.exports = { getIndividualTransactions, getSingleTransaction };
+const postUserTransaction = (request, response, next) => {
+  const { user_id } = request.params;
+  const transactionData = request.body;
+    insertUserTransaction(user_id, transactionData).then((data)=>{response.status(201).send({ "comment": data });})
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+module.exports = { getIndividualTransactions, getSingleTransaction, postUserTransaction };

@@ -11,7 +11,9 @@ dotenv.config();
 const {
   getIndividualTransactions,
   getSingleTransaction,
-} = require('./Controllers/TransactionController');
+  postUserTransaction,
+} = require("./Controllers/TransactionController");
+
 
 const {
   getExpenseCategories,
@@ -70,6 +72,8 @@ app.get("/income_categories", getIncomeCategories);
 app.get("/income_categories/:category_name/", getIncomeCategoryByName);
 
 app.post('/users/:user_id/income', postIncomeByUserId);
+
+app.post("/users/:user_id/transaction", postUserTransaction)
 
 const port = process.env.PORT || 5000;
 
