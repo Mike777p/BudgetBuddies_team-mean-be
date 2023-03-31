@@ -1,4 +1,4 @@
-const User = require("../db/seeds/models.js/Users");
+const {User} = require("../db/seeds/models.js/Users");
 
 const Budget = require("../db/seeds/models.js/BudgetModel");
 

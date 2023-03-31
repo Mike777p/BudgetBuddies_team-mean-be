@@ -1,5 +1,5 @@
-const User = require("../db/seeds/models.js/Users");
-const Transaction = require("../db/seeds/models.js/Users");
+const {User, Transaction} = require("../db/seeds/models.js/Users");
+const Budget = require("../db/seeds/models.js/BudgetModel");
 
 const fetchIndividualTransactions = async (id) => {
   try {
@@ -28,6 +28,7 @@ const fetchSingleTransaction = async (user_id, transaction_id) => {
 
 
 const insertUserTransaction = async (userId, transactionData) => {
+
   // create new transaction
   const transaction = new Transaction({
     userId,
@@ -41,20 +42,20 @@ const insertUserTransaction = async (userId, transactionData) => {
   });
 
   // update the users transactions array
-  const user = await User.findOneAndUpdate(
-    { 'user_data.user_id': userId },
-    { $push: { transactions: transaction } },
-    { new: true }
-  );
-
-  // update budgets categorySpends or categoryIncome array, depending on transaction type
-  const budget = await Budget.findOneAndUpdate(
+  try {
+    const user = await User.updateOne(
+      { 'user_data.user_id': userId },
+      { $push: { transactions: transaction } },
+      { new: true }
+    )
+      // update budgets categorySpends or categoryIncome array, depending on transaction type!
+  const budget = await Budget.updateOne(
     { user_id: userId },
     {
       $inc: {
         balance: transaction.type === 'income' ? transaction.amount : -transaction.amount,
-        total_income: transaction.type === 'income' ? transaction.amount : null,
-        total_expenses: transaction.type === 'expense' ? transaction.amount : null
+        total_income: transaction.type === 'income' ? transaction.amount : 0,
+        total_expenses: transaction.type === 'expense' ? transaction.amount : 0,
       },
       $push: {
         [transaction.type === 'income' ? 'categoryIncome' : 'categorySpends']: {
@@ -67,7 +68,12 @@ const insertUserTransaction = async (userId, transactionData) => {
     { new: true }
   );
 
-  return { user, budget };
+    return {user, budget}
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+
 };
 
 
