@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 const dotenv = require("dotenv");
 const connectDB = require("./connect.js");
@@ -11,7 +11,7 @@ dotenv.config();
 const {
   getIndividualTransactions,
   getSingleTransaction,
-} = require("./Controllers/TransactionController");
+} = require('./Controllers/TransactionController');
 
 const {
   getExpenseCategories,
@@ -27,7 +27,8 @@ const {
 const {
   getIncomeCategories,
   getIncomeCategoryByName,
-} = require("./Controllers/IncomeController");
+  postIncomeByUserId,
+} = require('./Controllers/IncomeController');
 
 const {
   getUsers,
@@ -41,9 +42,10 @@ const {
 } = require("./Controllers/UserControllers.js");
 
 // This route can be changed / used
-app.get("/", (req, res) => {
-  res.send("Welcome to Budget Buddies");
+app.get('/', (req, res) => {
+  res.send('Welcome to Budget Buddies');
 });
+
 
 app.get("/users", getUsers);
 app.get("/users/:user_id/transactions", getIndividualTransactions);
@@ -67,6 +69,8 @@ app.get("/currencies/:currency_name", getCurrencyByName);
 app.get("/income_categories", getIncomeCategories);
 app.get("/income_categories/:category_name/", getIncomeCategoryByName);
 
+app.post('/users/:user_id/income', postIncomeByUserId);
+
 const port = process.env.PORT || 5000;
 
 const start = async () => {
@@ -81,4 +85,4 @@ const start = async () => {
 };
 
 start();
-("");
+
