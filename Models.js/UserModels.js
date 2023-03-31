@@ -1,4 +1,4 @@
-const {User} = require("../db/seeds/models.js/Users");
+const {User, UserGoal} = require("../db/seeds/models.js/Users");
 
 const Budget = require("../db/seeds/models.js/BudgetModel");
 
@@ -104,6 +104,32 @@ const fetchUserExpenses = async (user_id) => {
   }
 };
 
+const insertUserGoal = async (userId, userGoalData) => {
+  const userGoal = new UserGoal({
+    userId,
+    budgetId: userGoalData.budgetId,
+    target_amount: userGoalData.target_amount,
+    balance: userGoalData.balance,
+    description: userGoalData.description,
+    target_date: userGoalData.target_date,
+    deposit: userGoalData.deposit,
+    deposit_frequency : userGoalData.deposit_frequency,
+    reason: userGoalData.reason
+  });
+
+  try {
+    const user = await User.updateOne(
+      { 'user_data.user_id': userId },
+      { $push: { userGoals: userGoal } },
+      { new: true }
+    )  
+    return user;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
 module.exports = {
   fetchUsers,
   fetchUserBalance,
@@ -113,4 +139,5 @@ module.exports = {
   fetchUserGoalById,
   fetchUserById,
   fetchUserExpenses,
+  insertUserGoal
 };

@@ -7,6 +7,7 @@ const {
   fetchUserBudget,
   fetchUserGoalById,
   fetchUserExpenses,
+  insertUserGoal,
 } = require("../Models.js/UserModels");
 
 const getUsers = (request, response, next) => {
@@ -91,6 +92,14 @@ const getUserExpenses = (request, response, next) => {
     });
 };
 
+const postUserGoal = (request, response, next) => {
+  const { user_id } = request.params;
+  const userGoal = request.body;
+  insertUserGoal(user_id, userGoal).then((data) => {
+    response.status(201).send({ confirmation: data });
+  });
+};
+
 module.exports = {
   getUsers,
   getUserBalance,
@@ -100,4 +109,6 @@ module.exports = {
   getUserGoalById,
   getUserById,
   getUserExpenses,
+  postUserGoal,
 };
+
