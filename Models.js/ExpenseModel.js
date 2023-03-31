@@ -20,11 +20,11 @@ const fetchExpenseCategoriesByName = async (category) => {
     }
 }
 
-const fetchSubCategoriesByName = async (category) => {
+const fetchSubCategoriesByName = async (category, subcategory) => {
     try {
-        const subCategories = await ExpenseCategories.find({'name': category}).select(
-            'subcategories'
-        )
+        const subCategories = await ExpenseCategories.findOne(
+            {'name': category},
+            {subcategories: {$elemMatch: {name: subcategory}}})
         return subCategories;
     } catch (error) {
         throw new Error(`Expence category ${category} was not found`)
