@@ -1,4 +1,4 @@
-const mockUserData = [{
+const mockUserData = {
   user_data: {
     user_id: 1,
     budget_id: 1,
@@ -123,6 +123,6 @@ const mockUserData = [{
       end_date: '2024-03-31T00:00:00Z',
     },
   ],
-}];
+};
 
 module.exports = mockUserData;

@@ -1,6 +1,5 @@
 const transactions = [
   {
-    transactionId: "60a3f1a42b3d8e48c1f1d1e3",
     userId: 2,
     budgetId: 1,
     categoryId: 4,
@@ -13,7 +12,6 @@ const transactions = [
     currency_id: 1,
   },
   {
-    transactionId: "60a3f1a42b3d8e48c1f1d1e11",
     userId: 1,
     budgetId: 1,
     categoryId: 1,
@@ -26,7 +24,6 @@ const transactions = [
     currency_id: 1,
   },
   {
-    transactionId: "60a3f1a42b3d8e48c1f1d1e10",
     userId: 1,
     budgetId: 1,
     categoryId: 7,
@@ -39,7 +36,6 @@ const transactions = [
     currency_id: 1,
   },
   {
-    transactionId: "60a3f1a42b3d8e48c1f1d1e9",
     userId: 1,
     budgetId: 1,
     categoryId: 12,
@@ -52,7 +48,6 @@ const transactions = [
     currency_id: 1,
   },
   {
-    transactionId: "60a3f1a42b3d8e48c1f1d1e8",
     userId: 1,
     budgetId: 1,
     categoryId: 22,
@@ -65,7 +60,6 @@ const transactions = [
     currency_id: 1,
   },
   {
-    transactionId: "60a3f1a42b3d8e48c1f1d1e3",
     userId: 1,
     budgetId: 1,
     categoryId: 21,
@@ -78,7 +72,6 @@ const transactions = [
     currency_id: 1,
   },
   {
-    transactionId: "60a3f1a42b3d8e48c1f1d1e4",
     userId: 2,
     budgetId: 1,
     categoryId: 28,
@@ -91,7 +84,6 @@ const transactions = [
     currency_id: 1,
   },
   {
-    transactionId: "60a3f1a42b3d8e48c1f1d1e5",
     userId: 3,
     budgetId: 1,
     categoryId: 17,
@@ -104,7 +96,6 @@ const transactions = [
     currency_id: 1,
   },
   {
-    transactionId: "60a3f1a42b3d8e48c1f1d1e6",
     userId: 4,
     budgetId: 1,
     categoryId: 8,
@@ -117,7 +108,6 @@ const transactions = [
     currency_id: 1,
   },
   {
-    transactionId: "60a3f1a42b3d8e48c1f1d1e7",
     userId: 5,
     budgetId: 1,
     categoryId: 13,

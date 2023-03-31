@@ -12,6 +12,7 @@ dotenv.config();
 const {
   getIndividualTransactions,
   getSingleTransaction,
+  postUserTransaction,
 } = require("./Controllers/TransactionController");
 
 const {getExpenseCategories, getExpenseCategoriesByName, getsubCategoriesByName} = require('./Controllers/ExpenseController')
@@ -53,6 +54,8 @@ app.get('/currencies', getCurrencies)
 app.get('/currencies/:currency_name', getCurrencyByName)
 app.get('/income_categories', getIncomeCategories)
 app.get('/income_categories/:category_name', getIncomeCategoryByName)
+
+app.post("/users/:user_id/transaction", postUserTransaction)
 
 const port = process.env.PORT || 5000;
 

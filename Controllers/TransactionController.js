@@ -29,4 +29,14 @@ const getSingleTransaction = (request, response, next) => {
     });
 };
 
-module.exports = { getIndividualTransactions, getSingleTransaction };
+const postUserTransaction = (request, response, next) => {
+  const { user_id } = request.params;
+  const transactionData = request.body;
+  console.log(transactionData, user_id)
+    // insertUserTransaction(user_id).then((data)=>{response.status(201).send({ "comment": data });})
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+module.exports = { getIndividualTransactions, getSingleTransaction, postUserTransaction };

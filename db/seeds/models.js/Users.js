@@ -55,5 +55,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("User", UserSchema);
+const Transaction = mongoose.model("Transaction", TransactionSchema);
+const UserGoal = mongoose.model("UserGoal", UserGoalSchema);
 
-module.exports = User;
+module.exports = {User, Transaction, UserGoal};
