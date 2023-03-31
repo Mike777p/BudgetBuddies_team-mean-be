@@ -48,11 +48,11 @@ app.get("/users/:user_id/budget", getUserBudget);
 app.get('/users/:user_id', getUserById)
 app.get('/expense_categories', getExpenseCategories)
 app.get('/expense_categories/:category_name', getExpenseCategoriesByName)
-app.get('/expense_categories/:category_name/subcategories', getsubCategoriesByName)
+app.get('/expense_categories/:category_name/:subcategory', getsubCategoriesByName)
 app.get('/currencies', getCurrencies)
 app.get('/currencies/:currency_name', getCurrencyByName)
 app.get('/income_categories', getIncomeCategories)
-app.get('/income_categories/:category_name', getIncomeCategoryByName)
+app.get('/income_categories/:category_name/', getIncomeCategoryByName)
 
 const port = process.env.PORT || 5000;
 

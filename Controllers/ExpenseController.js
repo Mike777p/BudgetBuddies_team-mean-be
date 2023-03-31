@@ -26,8 +26,8 @@ const getExpenseCategoriesByName = (request, response, next) => {
 }
 
 const getsubCategoriesByName = (request, response, next) => {
-    const {category_name} = request.params;
-    fetchSubCategoriesByName(category_name)
+    const {category_name, subcategory} = request.params;
+    fetchSubCategoriesByName(category_name, subcategory)
     .then((data) => {
         response.status(200).send({data})
     })
