@@ -1,4 +1,3 @@
-
 const {
   fetchUsers,
   fetchUserBalance,
@@ -7,8 +6,8 @@ const {
   fetchUserGroups,
   fetchUserBudget,
   fetchUserGoalById,
+  fetchUserExpenses,
 } = require("../Models.js/UserModels");
-
 
 const getUsers = (request, response, next) => {
   fetchUsers()
@@ -31,31 +30,34 @@ const getUserBalance = (request, response, next) => {
 
 const getUserGoals = (request, response, next) => {
   const { user_id } = request.params;
-  fetchUserGoals(user_id).then((data) => {
-    response.status(200).send({ data });
-  }).catch(next);
+  fetchUserGoals(user_id)
+    .then((data) => {
+      response.status(200).send({ data });
+    })
+    .catch(next);
 };
 
 const getUserGoalById = (request, response, next) => {
   const { goal_id, user_id } = request.params;
-  fetchUserGoalById(goal_id, user_id).then((data) => {
-    response.status(200).send({ data });
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+  fetchUserGoalById(goal_id, user_id)
+    .then((data) => {
+      response.status(200).send({ data });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 const getUserById = (request, response, next) => {
-  const {user_id} = request.params;
+  const { user_id } = request.params;
   fetchUserById(user_id)
-  .then((data) => {
-    response.status(200).send({data})
-  })
-  .catch((error) => {
-    console.log(error);
-  })
-}
+    .then((data) => {
+      response.status(200).send({ data });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 const getUserGroups = (request, response, next) => {
   const { user_id } = request.params;
@@ -75,6 +77,20 @@ const getUserBudget = (request, response, next) => {
     });
 };
 
+const getUserExpenses = (request, response, next) => {
+  const { user_id } = request.params;
+  fetchUserExpenses(user_id)
+    .then((data) => {
+      let data_user_exp = data[0].transactions.filter(
+        (word) => word.type == "expense"
+      );
+      response.status(200).send({ data_user_exp });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 module.exports = {
   getUsers,
   getUserBalance,
@@ -82,5 +98,6 @@ module.exports = {
   getUserGroups,
   getUserBudget,
   getUserGoalById,
-  getUserById
+  getUserById,
+  getUserExpenses,
 };
