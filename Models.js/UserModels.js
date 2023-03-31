@@ -2,7 +2,6 @@ const {User} = require("../db/seeds/models.js/Users");
 
 const Budget = require("../db/seeds/models.js/BudgetModel");
 
-
 const fetchUsers = async () => {
   try {
     const users = await User.find();
@@ -30,7 +29,6 @@ const fetchUserBalance = async (user_id) => {
   }
 };
 
-
 const fetchUserGoals = async (id) => {
   try {
     const user = await User.findOne({ "user_data.user_id": id }).select(
@@ -47,24 +45,25 @@ const fetchUserGoals = async (id) => {
 
 const fetchUserById = async (user_id) => {
   try {
-    const user = await User.findOne({'user_data.user_id': user_id})
-    .select('user_data')
+    const user = await User.findOne({ "user_data.user_id": user_id }).select(
+      "user_data"
+    );
     return user;
   } catch (error) {
     throw error;
   }
-}
+};
 
 const fetchUserGoalById = async (g_id, u_id) => {
   try {
     const userGoal = await User.findOne(
       { "user_data.user_id": u_id },
-      { "userGoals": { $elemMatch: { _id: g_id } } }
+      { userGoals: { $elemMatch: { _id: g_id } } }
     );
     if (!userGoal) {
       throw new Error(`User ${u_id} with goal id ${g_id} was not found`);
     }
-    return userGoal
+    return userGoal;
   } catch (error) {
     throw new Error(`Error fetching user goal: ${error.message}`);
   }
@@ -93,6 +92,18 @@ const fetchUserBudget = async (user_id) => {
   }
 };
 
+const fetchUserExpenses = async (user_id) => {
+  try {
+    const userExpenses = await User.find({
+      "user_data.user_id": user_id,
+    }).select("transactions");
+
+    return userExpenses;
+  } catch (error) {
+    throw new Error(`Error fetching user expenses: ${error.message}`);
+  }
+};
+
 module.exports = {
   fetchUsers,
   fetchUserBalance,
@@ -100,6 +111,6 @@ module.exports = {
   fetchUserGroups,
   fetchUserBudget,
   fetchUserGoalById,
-  fetchUserById
+  fetchUserById,
+  fetchUserExpenses,
 };
-
