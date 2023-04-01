@@ -1,17 +1,17 @@
-const {User, UserGoal} = require("../db/seeds/models.js/Users");
+const { User } = require("../db/seeds/seedModels.js/SeedUsersModel");
 
-const Budget = require("../db/seeds/models.js/BudgetModel");
+const Budget = require("../db/seeds/seedModels.js/SeedBudgetModel");
 
 const fetchUsers = async () => {
   try {
     const users = await User.find();
     if (!users) {
-      throw new Error(`User ${id} not found`);
+      throw new Error(`Users not found`);
     }
     return users;
   } catch (error) {
     console.error(error);
-    throw new Error(`Error! user not found: ${error.message}`);
+    throw new Error(`Error! users not found: ${error.message}`);
   }
 };
 
@@ -29,20 +29,6 @@ const fetchUserBalance = async (user_id) => {
   }
 };
 
-const fetchUserGoals = async (id) => {
-  try {
-    const user = await User.findOne({ "user_data.user_id": id }).select(
-      "userGoals"
-    );
-    if (!user) {
-      throw new Error(`User with id ${id} not found`);
-    }
-    return user;
-  } catch (error) {
-    throw new Error(`Error fetching user goals: ${error.message}`);
-  }
-};
-
 const fetchUserById = async (user_id) => {
   try {
     const user = await User.findOne({ "user_data.user_id": user_id }).select(
@@ -51,21 +37,6 @@ const fetchUserById = async (user_id) => {
     return user;
   } catch (error) {
     throw error;
-  }
-};
-
-const fetchUserGoalById = async (g_id, u_id) => {
-  try {
-    const userGoal = await User.findOne(
-      { "user_data.user_id": u_id },
-      { userGoals: { $elemMatch: { _id: g_id } } }
-    );
-    if (!userGoal) {
-      throw new Error(`User ${u_id} with goal id ${g_id} was not found`);
-    }
-    return userGoal;
-  } catch (error) {
-    throw new Error(`Error fetching user goal: ${error.message}`);
   }
 };
 
@@ -104,40 +75,11 @@ const fetchUserExpenses = async (user_id) => {
   }
 };
 
-const insertUserGoal = async (userId, userGoalData) => {
-  const userGoal = new UserGoal({
-    userId,
-    budgetId: userGoalData.budgetId,
-    target_amount: userGoalData.target_amount,
-    balance: userGoalData.balance,
-    description: userGoalData.description,
-    target_date: userGoalData.target_date,
-    deposit: userGoalData.deposit,
-    deposit_frequency : userGoalData.deposit_frequency,
-    reason: userGoalData.reason
-  });
-
-  try {
-    const user = await User.updateOne(
-      { 'user_data.user_id': userId },
-      { $push: { userGoals: userGoal } },
-      { new: true }
-    )  
-    return user;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-}
-
 module.exports = {
   fetchUsers,
   fetchUserBalance,
-  fetchUserGoals,
   fetchUserGroups,
   fetchUserBudget,
-  fetchUserGoalById,
   fetchUserById,
   fetchUserExpenses,
-  insertUserGoal
 };

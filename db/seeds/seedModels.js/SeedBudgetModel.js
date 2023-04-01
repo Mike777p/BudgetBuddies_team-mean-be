@@ -15,6 +15,8 @@ const CategoryIncomeSchema = new mongoose.Schema({
 
 const BudgetSchema = new mongoose.Schema({
   user_id: { type: Number, required: true },
+  income_t_count: {type: Number, required: false},
+  expense_t_count: {type: Number, required: false},
   balance: { type: Number, required: true },
   total_income: { type: Number, required: true },
   total_expenses: { type: Number, required: true },

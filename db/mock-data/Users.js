@@ -1,6 +1,8 @@
 const mockUserData = {
   user_data: {
     user_id: 1,
+    income_t_count: 2,
+    expense_t_count: 4,
     budget_id: 1,
     name: 'Mike Perry',
     user_name: 'mikeTest',

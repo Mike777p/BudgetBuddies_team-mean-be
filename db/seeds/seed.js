@@ -1,19 +1,28 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const { Budget, Currency, ExpenseCategories, IncomeCategory, User } = require("./models.js/ModelIndex.js");
-const { mockBudgetData, mockExpencesCategoriesData, mockUserData, mockCurrenciesData, mockIncomeCategoriesData } = require("../mock-data/index.js");
+const {
+  Budget,
+  Currency,
+  ExpenseCategories,
+  IncomeCategory,
+  User,
+} = require("./seedModels.js/SeedModelIndex");
+const {
+  mockBudgetData,
+  mockExpencesCategoriesData,
+  mockUserData,
+  mockCurrenciesData,
+  mockIncomeCategoriesData,
+} = require("../mock-data/index.js");
 
 dotenv.config();
 
 async function seed() {
   try {
-    await mongoose.connect(
-      process.env.MONGO_URL,
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    );
+    await mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
     await User.deleteMany({});
     await User.insertMany(mockUserData);
@@ -22,13 +31,13 @@ async function seed() {
     await Budget.insertMany(mockBudgetData);
 
     await Currency.deleteMany({});
-    await Currency.insertMany(mockCurrenciesData)
+    await Currency.insertMany(mockCurrenciesData);
 
     await ExpenseCategories.deleteMany({});
-    await ExpenseCategories.insertMany(mockExpencesCategoriesData)
+    await ExpenseCategories.insertMany(mockExpencesCategoriesData);
 
     await IncomeCategory.deleteMany({});
-    await IncomeCategory.insertMany(mockIncomeCategoriesData)
+    await IncomeCategory.insertMany(mockIncomeCategoriesData);
 
     console.log("Data seeded successfully!");
     process.exit();
