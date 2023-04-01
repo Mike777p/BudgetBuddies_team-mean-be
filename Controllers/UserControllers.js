@@ -5,6 +5,8 @@ const {
   fetchUserGroups,
   fetchUserBudget,
   fetchUserExpenses,
+  checkUserName,
+  insertNewUser,
 } = require("../Models.js/UserModels");
 
 const getUsers = (request, response, next) => {
@@ -69,6 +71,39 @@ const getUserExpenses = (request, response, next) => {
     });
 };
 
+const postNewUser = (request, response, next) => {
+  const { email, user_name, name, currency, user_id, password, budget_id } =
+    request.body;
+  checkUserName(user_name)
+    .then((data) => {
+      if (data) {
+        let errors = {};
+        if (data.user_data.user_name === user_name) {
+          errors.username = "User Name already exists";
+          return response.status(400).json(errors);
+        }
+      } else {
+        insertNewUser(
+          email,
+          user_name,
+          name,
+          currency,
+          user_id,
+          password,
+          budget_id
+        ).then((data) => {
+          console.log(data);
+          response.status(201).send(data);
+        });
+      }
+    })
+    .catch((err) => {
+      return response.status(500).json({
+        error: err,
+      });
+    });
+};
+
 module.exports = {
   getUsers,
   getUserBalance,
@@ -76,5 +111,5 @@ module.exports = {
   getUserBudget,
   getUserById,
   getUserExpenses,
+  postNewUser,
 };
-

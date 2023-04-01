@@ -44,6 +44,7 @@ const {
   getUserGroups,
   getUserBudget,
   getUserExpenses,
+  postNewUser,
 } = require("./Controllers/UserControllers.js");
 
 // This route can be changed / used
@@ -51,6 +52,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to Budget Buddies");
 });
 
+app.post("/users", postNewUser);
 app.get("/users", getUsers);
 app.get("/users/:user_id", getUserById);
 

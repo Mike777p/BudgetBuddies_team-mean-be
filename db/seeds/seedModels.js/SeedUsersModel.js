@@ -24,7 +24,7 @@ const UserGoalSchema = new mongoose.Schema({
   deposit: { type: Number, required: true },
   deposit_frequency: { type: String, required: true },
   reason: { type: String },
-  goal_id: { type: mongoose.Types.ObjectId }
+  goal_id: { type: mongoose.Types.ObjectId },
 });
 
 const RecurringPaymentSchema = new mongoose.Schema({
@@ -46,7 +46,7 @@ const UserSchema = new mongoose.Schema({
     user_name: { type: String, required: true },
     email: { type: String, required: true },
     currency: { type: String, required: true },
-    password: { type: String, required: true },
+    password: { type: String, required: false },
     groups: [{ type: Number }],
   },
   transactions: [TransactionSchema],
@@ -58,4 +58,4 @@ const User = mongoose.model("User", UserSchema);
 const Transaction = mongoose.model("Transaction", TransactionSchema);
 const UserGoal = mongoose.model("UserGoal", UserGoalSchema);
 
-module.exports = {User, Transaction, UserGoal};
+module.exports = { User, Transaction, UserGoal };
