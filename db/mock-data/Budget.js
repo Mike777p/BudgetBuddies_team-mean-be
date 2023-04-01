@@ -1,6 +1,8 @@
 
 const mockBudgetData = [{
   user_id: 1,
+  income_t_count: 2,
+  expense_t_count: 4,
   balance: 100000,
   total_income: 12000,
   total_expenses: 2000,
