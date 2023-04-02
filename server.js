@@ -47,12 +47,15 @@ const {
   postNewUser,
 } = require("./Controllers/UserControllers.js");
 
+const { postNewUserBudget } = require("./Controllers/BudgetControllers.js");
+
 // This route can be changed / used
 app.get("/", (req, res) => {
   res.send("Welcome to Budget Buddies");
 });
 
 app.post("/users", postNewUser);
+app.post("/users/:user_id/budget", postNewUserBudget);
 app.get("/users", getUsers);
 app.get("/users/:user_id", getUserById);
 
