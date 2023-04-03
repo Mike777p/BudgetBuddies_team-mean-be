@@ -9,7 +9,7 @@ app.use(express.json());
 dotenv.config();
 
 const {
-  getIndividualTransactions,
+  getUserTransactions,
   getSingleTransaction,
   postUserTransaction,
 } = require("./Controllers/TransactionController");
@@ -63,7 +63,7 @@ app.get("/users/:user_id/balance", getUserBalance);
 app.get("/users/:user_id/groups", getUserGroups);
 app.get("/users/:user_id/budget", getUserBudget);
 
-app.get("/users/:user_id/transactions", getIndividualTransactions);
+app.get("/users/:user_id/transactions", getUserTransactions);
 app.get("/users/:user_id/transactions/:transaction_id", getSingleTransaction);
 app.post("/users/:user_id/transaction", postUserTransaction);
 

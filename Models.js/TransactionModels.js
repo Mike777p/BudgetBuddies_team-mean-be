@@ -3,6 +3,8 @@ const {
   Transaction,
 } = require("../db/seeds/seedModels.js/SeedUsersModel");
 const Budget = require("../db/seeds/seedModels.js/SeedBudgetModel");
+const categoryById = require("../assets/CategorisedExpenses");
+const monthNames = require("../assets/MonthsByIndex");
 
 const fetchIndividualTransactions = async (id) => {
   try {
@@ -37,10 +39,14 @@ const insertUserTransaction = async (userId, transactionData) => {
     categoryId: transactionData.categoryId,
     type: transactionData.type,
     description: transactionData.description,
-    amount: transactionData.amount,
+    amount: transactionData.amount * 100,
     date: transactionData.date,
     currency_id: transactionData.currency_id,
   });
+
+  const dateObject = new Date(transaction.date);
+  const year = dateObject.getFullYear();
+  const monthIndex = dateObject.getMonth();
 
   // update the users transactions array
   try {
@@ -49,7 +55,7 @@ const insertUserTransaction = async (userId, transactionData) => {
       { $push: { transactions: transaction } },
       { new: true }
     );
-    // update budgets categorySpends or categoryIncome array, depending on transaction type!
+    //  Incement Budget fields from trnasaction data
     const budget = await Budget.updateOne(
       { user_id: userId },
       {
@@ -65,12 +71,18 @@ const insertUserTransaction = async (userId, transactionData) => {
           expense_t_count: transaction.type === "expense" ? 1 : 0,
         },
         $push: {
-          [transaction.type === "income" ? "categoryIncome" : "categorySpends"]:
-            {
-              categoryId: transaction.categoryId,
-              amount: transaction.amount,
-              transactionId: transaction._id,
-            },
+          // update budgets categorySpends or categoryIncome array, depending on transaction type!
+          [transaction.type === "income"
+            ? `categoryIncome.${monthNames[monthIndex]}`
+            : `categorySpends.${monthNames[monthIndex]}`]: {
+            categoryId: transaction.categoryId,
+            amount: transaction.amount,
+            mainCategoryName: categoryById[transaction.categoryId].categoryName,
+            icon: categoryById[transaction.categoryId].icon,
+            year: year,
+            month: monthNames[monthIndex],
+            transactionId: transaction._id,
+          },
         },
       },
       { new: true }
