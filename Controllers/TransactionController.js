@@ -4,7 +4,7 @@ const {
   insertUserTransaction,
 } = require("../Models.js/TransactionModels");
 
-const getIndividualTransactions = (request, response, next) => {
+const getUserTransactions = (request, response, next) => {
   const { user_id } = request.params;
   fetchIndividualTransactions(user_id)
     .then((data) => {
@@ -39,4 +39,4 @@ const postUserTransaction = (request, response, next) => {
     });
 };
 
-module.exports = { getIndividualTransactions, getSingleTransaction, postUserTransaction };
+module.exports = { getUserTransactions, getSingleTransaction, postUserTransaction };

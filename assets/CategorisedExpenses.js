@@ -1,0 +1,33 @@
+const categoryById = {
+  '1': { categoryName: 'Salary', icon: '💰' },
+  '2': { categoryName: 'Investments', icon: '💹' },
+  '3': { categoryName: 'Freelance Work', icon: '💼' },
+  '4': { categoryName: 'Food', subcategoryName: 'Groceries', icon: '🛒' },
+  '5': { categoryName: 'Food', subcategoryName: 'Restaurants', icon: '🍽️' },
+  '6': { categoryName: 'Food', subcategoryName: 'Snacks', icon: '🍫' },
+  '7': { categoryName: 'Social Life', subcategoryName: 'Drinks', icon: '🍺' },
+  '8': { categoryName: 'Social Life', subcategoryName: 'Entertainment', icon: '🎭' },
+  '9': { categoryName: 'Social Life', subcategoryName: 'Dating', icon: '💕' },
+  '10': { categoryName: 'Self-Development', subcategoryName: 'Courses', icon: '📚' },
+  '11': { categoryName: 'Self-Development', subcategoryName: 'Books', icon: '📖' },
+  '12': { categoryName: 'Self-Development', subcategoryName: 'Apps', icon: '📱' },
+  '13': { categoryName: 'Transportation', subcategoryName: 'Gas', icon: '⛽' },
+  '14': { categoryName: 'Transportation', subcategoryName: 'Public Transport', icon: '🚆' },
+  '15': { categoryName: 'Transportation', subcategoryName: 'Parking', icon: '🅿️' },
+  '16': { categoryName: 'Household', subcategoryName: 'Rent', icon: '🏠' },
+  '17': { categoryName: 'Household', subcategoryName: 'Utilities', icon: '💡' },
+  '18': { categoryName: 'Household', subcategoryName: 'Supplies', icon: '🧹' },
+  '19': { categoryName: 'Holiday', subcategoryName: 'Flights', icon: '✈️' },
+  '20': { categoryName: 'Holiday', subcategoryName: 'Accommodation', icon: '🏨' },
+  '21': { categoryName: 'Holiday', subcategoryName: 'Activities', icon: '🏊‍♂️' },
+  '22': { categoryName: 'Clothing', subcategoryName: 'Shirts', icon: '👕' },
+  '23': { categoryName: 'Clothing', subcategoryName: 'Pants', icon: '👖' },
+  '24': { categoryName: 'Clothing', subcategoryName: 'Shoes', icon: '👟' },
+  '25': { categoryName: 'Hobbies', subcategoryName: 'Art Supplies', icon: '🎨' },
+  '26': { categoryName: 'Hobbies', subcategoryName: 'Sports Equipment', icon: '🏋️‍♂️' },
+  '27': { categoryName: 'Hobbies', subcategoryName: 'Gaming', icon: '🎮' },
+  '28': { categoryName: 'Bonus', icon: '💼' },
+};
+
+  
+module.exports = categoryById

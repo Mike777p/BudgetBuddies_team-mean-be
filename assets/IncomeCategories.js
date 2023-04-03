@@ -1,4 +1,4 @@
-const mockIncomeCategoriesData = [
+const IncomeCategoriesData = [
   {
     name: "Salary",
     icon: "💰",
@@ -21,4 +21,4 @@ const mockIncomeCategoriesData = [
   },
 ];
 
-module.exports = mockIncomeCategoriesData;
+module.exports = IncomeCategoriesData;
