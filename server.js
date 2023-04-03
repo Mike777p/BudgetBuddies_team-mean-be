@@ -3,9 +3,10 @@ const app = express();
 const dotenv = require("dotenv");
 const connectDB = require("./connect.js");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 app.use(express.json());
-
+app.use(cors());
 dotenv.config();
 
 const {
