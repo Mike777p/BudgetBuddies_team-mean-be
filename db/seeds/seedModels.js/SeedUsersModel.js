@@ -40,8 +40,8 @@ const RecurringPaymentSchema = new mongoose.Schema({
 
 const UserSchema = new mongoose.Schema({
   user_data: {
-    user_id: { type: Number, required: true },
-    budget_id: { type: Number, required: true },
+    user_id: { type: {}, required: true },
+    budget_id: { type: {}, required: true },
     name: { type: String, required: true },
     user_name: { type: String, required: true },
     email: { type: String, required: true },
