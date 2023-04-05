@@ -75,6 +75,43 @@ const fetchUserExpenses = async (user_id) => {
   }
 };
 
+const checkUserName = async (username) => {
+  try {
+    const checkUserNameUnique = await User.findOne({
+      "user_data.user_name": username,
+    });
+
+    return checkUserNameUnique;
+  } catch (error) {
+    throw new Error(`Error checking for username: ${error.message}`);
+  }
+};
+
+const insertNewUser = async (
+  email,
+  username,
+  name,
+  currency,
+  user_id,
+  password,
+  budget_id
+) => {
+  try {
+    const postedIncome = await User.create({
+      "user_data.email": email,
+      "user_data.user_name": username,
+      "user_data.name": name,
+      "user_data.currency": currency,
+      "user_data.user_id": user_id,
+      "user_data.password": password,
+      "user_data.budget_id": budget_id,
+    });
+    return postedIncome;
+  } catch (error) {
+    throw new Error(`Error checking for inserting new user: ${error.message}`);
+  }
+};
+
 module.exports = {
   fetchUsers,
   fetchUserBalance,
@@ -82,4 +119,6 @@ module.exports = {
   fetchUserBudget,
   fetchUserById,
   fetchUserExpenses,
+  checkUserName,
+  insertNewUser,
 };

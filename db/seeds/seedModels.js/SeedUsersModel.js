@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const TransactionSchema = new mongoose.Schema({
+
   transactionId: { type: mongoose.Types.ObjectId, ref: "CategorySpendsSchema" },
   userId: { type: String, required: true },
   budgetId: { type: String, required: true },
   categoryId: { type: Number, required: true },
-  type: { type: String, enum: ["income", "expense"], required: true },
+  type: { type: String, enum: ['income', 'expense'], required: true },
   description: { type: String, required: false },
   amount: { type: Number, required: true },
   date: { type: Date, required: true },
@@ -46,7 +47,7 @@ const UserSchema = new mongoose.Schema({
     user_name: { type: String, required: true },
     email: { type: String, required: true },
     currency: { type: String, required: true },
-    password: { type: String, required: true },
+    password: { type: String, required: false },
     groups: [{ type: Number }],
   },
   transactions: [TransactionSchema],
@@ -54,8 +55,8 @@ const UserSchema = new mongoose.Schema({
   recurringPayments: [RecurringPaymentSchema],
 });
 
-const User = mongoose.model("User", UserSchema);
-const Transaction = mongoose.model("Transaction", TransactionSchema);
-const UserGoal = mongoose.model("UserGoal", UserGoalSchema);
+const User = mongoose.model('User', UserSchema);
+const Transaction = mongoose.model('Transaction', TransactionSchema);
+const UserGoal = mongoose.model('UserGoal', UserGoalSchema);
 
 module.exports = { User, Transaction, UserGoal };
