@@ -38,6 +38,7 @@ const getUserById = (request, response, next) => {
 };
 
 const getUserGroups = (request, response, next) => {
+  console.log("Budget Requested");
   const { user_id } = request.params;
   fetchUserGroups(user_id).then((data) => {
     response.status(200).send({ data });
@@ -77,4 +78,3 @@ module.exports = {
   getUserById,
   getUserExpenses,
 };
-
