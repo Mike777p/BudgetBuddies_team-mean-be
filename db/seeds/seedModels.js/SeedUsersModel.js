@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
 const TransactionSchema = new mongoose.Schema({
-  transactionId: { type: mongoose.Types.ObjectId, ref: 'CategorySpendsSchema' },
-  userId: { type: {}, required: true },
-  budgetId: { type: {}, required: true },
+
+  transactionId: { type: mongoose.Types.ObjectId, ref: "CategorySpendsSchema" },
+  userId: { type: String, required: true },
+  budgetId: { type: String, required: true },
   categoryId: { type: Number, required: true },
   type: { type: String, enum: ['income', 'expense'], required: true },
   description: { type: String, required: false },
@@ -15,7 +16,7 @@ const TransactionSchema = new mongoose.Schema({
 });
 
 const UserGoalSchema = new mongoose.Schema({
-  user_id: { type: {}, required: true },
+  user_id: { type: String, required: true },
   target_amount: { type: Number, required: true },
   balance: { type: Number, default: 0 },
   created_at: { type: Date, default: Date.now },
@@ -28,8 +29,8 @@ const UserGoalSchema = new mongoose.Schema({
 });
 
 const RecurringPaymentSchema = new mongoose.Schema({
-  user_id: { type: {}, required: true },
-  budget_id: { type: {}, required: true },
+  user_id: { type: String, required: true },
+  budget_id: { type: String, required: true },
   category_id: { type: Number, required: true },
   description: { type: String, required: true },
   amount: { type: Number, required: true },
@@ -40,8 +41,8 @@ const RecurringPaymentSchema = new mongoose.Schema({
 
 const UserSchema = new mongoose.Schema({
   user_data: {
-    user_id: { type: {}, required: true },
-    budget_id: { type: {}, required: true },
+    user_id: { type: String, required: true },
+    budget_id: { type: String, required: true },
     name: { type: String, required: true },
     user_name: { type: String, required: true },
     email: { type: String, required: true },
